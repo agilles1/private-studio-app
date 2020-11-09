@@ -2,12 +2,16 @@ class TeachersController < ApplicationController
 
   # GET: /teachers
   get "/teachers" do
-    erb :"/teachers/index.html"
+    erb :"/teachers/index"
+  end
+  
+  get "/teachers/login" do
+    erb :"/teachers/login"
   end
 
   # GET: /teachers/new
   get "/teachers/new" do
-    erb :"/teachers/new.html"
+    erb :"/teachers/new"
   end
 
   # POST: /teachers
@@ -17,12 +21,12 @@ class TeachersController < ApplicationController
 
   # GET: /teachers/5
   get "/teachers/:id" do
-    erb :"/teachers/show.html"
+    erb :"/teachers/show"
   end
 
   # GET: /teachers/5/edit
   get "/teachers/:id/edit" do
-    erb :"/teachers/edit.html"
+    erb :"/teachers/edit"
   end
 
   # PATCH: /teachers/5
