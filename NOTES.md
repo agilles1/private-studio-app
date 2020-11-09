@@ -33,6 +33,7 @@ TO DO:
         -create/edit/delete new assignment
         -add if_logged_in? authentication
         -add student to "roster" (Prints a list of Students without teacher_id)
+        -do not create if already exhists?
 
     -Student
         -CRUD account functions

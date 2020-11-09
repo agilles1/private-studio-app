@@ -28,8 +28,20 @@ class TeachersController < ApplicationController
 
   end
 
+  post "/teachers" do
+    if params[:name] == "" || params[:email] == "" || params[:password] == ""
+      redirect to '/teachers/signup'
+    else
+      @user = Teacher.new(params[:teacher])
+      @user.save
+      session[:user_id] = @user.id
+      redirect to '/teachers'
+    end
+  end
+
   # GET: /teachers/5
   get "/teachers/:id" do
+    @user = current_user
     erb :"/teachers/show"
   end
 
@@ -40,6 +52,7 @@ class TeachersController < ApplicationController
 
   # PATCH: /teachers/5
   patch "/teachers/:id" do
+    binding.pry
     redirect "/teachers/:id"
   end
 
