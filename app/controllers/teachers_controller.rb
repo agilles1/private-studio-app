@@ -6,6 +6,8 @@ class TeachersController < ApplicationController
     erb :"/teachers/index"
   end
   
+  #Account Management#
+
   get "/teachers/login" do
     erb :"/teachers/login"
   end
@@ -45,6 +47,12 @@ class TeachersController < ApplicationController
   delete "/teachers/:id/delete" do
     redirect "/teachers"
   end
+
+  #Interact with Students from Teacher view#
+
+  get "/teachers/students/:id" do
+    #renders the view with previous assignments and has a button to create a new assignment.
+    end
 
   helpers do
 

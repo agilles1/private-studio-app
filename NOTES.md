@@ -26,3 +26,21 @@ Note has:
         -Student (read only) 
         -Teacher (CRUD)
     
+TO DO:
+    -Teacher
+        -create/edit/delete new user function
+        -student assignment view
+        -create/edit/delete new assignment
+        -add if_logged_in? authentication
+        -add student to "roster" (Prints a list of Students without teacher_id)
+
+    -Student
+        -CRUD account functions
+            -select their teacher with radio button
+        -assignment read view
+
+    -Assignment
+        -Limit CUD function to teacher
+
+            
+
