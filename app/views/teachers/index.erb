@@ -1,1 +1,7 @@
-<h1>This is the Model's index page.</h1>
+<h1>Welcome,<%=@user.name%>!</h1>
+
+<h3>Current Students:</h3>
+<br>
+<%@students.each do |student|%>
+    <a href="/teachers/students/<%=student.id%>"> <%=student.name%> </a>
+<%end%>

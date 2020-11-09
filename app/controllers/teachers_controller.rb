@@ -1,7 +1,8 @@
 class TeachersController < ApplicationController
 
-  # GET: /teachers
   get "/teachers" do
+    @user = current_user
+    @students = @user.students
     erb :"/teachers/index"
   end
   
@@ -9,14 +10,20 @@ class TeachersController < ApplicationController
     erb :"/teachers/login"
   end
 
-  # GET: /teachers/new
-  get "/teachers/new" do
+  get "/teachers/signup" do
     erb :"/teachers/new"
   end
 
-  # POST: /teachers
-  post "/teachers" do
-    redirect "/teachers"
+  post "/teachers/login" do
+    user = Teacher.find_by(:email => params[:email])
+ 
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/teachers"
+    else
+      redirect "/teachers/login"
+    end
+
   end
 
   # GET: /teachers/5
@@ -38,4 +45,17 @@ class TeachersController < ApplicationController
   delete "/teachers/:id/delete" do
     redirect "/teachers"
   end
+
+  helpers do
+
+    def logged_in?
+      !!current_user
+    end
+
+    def current_user
+      @current_user ||= Teacher.find_by(id: session[:user_id]) if session[:user_id]
+    end
+
+  end
+
 end
