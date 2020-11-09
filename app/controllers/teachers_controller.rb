@@ -47,10 +47,10 @@ class TeachersController < ApplicationController
 
   # GET: /teachers/5/edit
   get "/teachers/:id/edit" do
+    @user = current_user
     erb :"/teachers/edit"
   end
 
-  # PATCH: /teachers/5
   patch "/teachers/:id" do
     binding.pry
     redirect "/teachers/:id"
