@@ -1,11 +1,27 @@
-<h1>Welcome, <%=@user.name%>!</h1>
+<h1>Welcome, <%=@user.name%>!</h1> 
 
-<a href="/teachers/<%=@user.id%>" class="sidebar">Account Details<a>
+    <div class="sidebar">
+        <br>
+        <form method="post" action="/teachers/logout">
+        <input type="submit" value="Sign-out">
+        </form>
+        <br>
+        <form method="get" action="/teachers/<%=@user.id%>">
+        <input type="submit" value="Account Details">
+        </form>
+        <br>
+        <form method="get" action="/teachers/<%=@user.id%>/delete>">
+        <input type="submit" value="Delete Account">
+        </form>
+        <br>
+       
+    </div>
 
-<h3>Current Students:</h3>
-<br>
-<%@students.each do |student|%>
-    <a href="/teachers/students/<%=student.id%>"> <%=student.name%> </a>
+    <h3>Current Students:</h3>
     <br>
-<%end%>
-<br>
+    <%@students.each do |student|%>
+        <a href="/teachers/students/<%=student.id%>"> <%=student.name%> </a>
+        <br>
+    <%end%>
+    <br>
+

@@ -7,7 +7,11 @@ class TeachersController < ApplicationController
   end
   
   #Account Management#
-
+  patch "/teachers/:id" do
+    binding.pry
+    redirect "/teachers/:id"
+  end
+  
   get "/teachers/login" do
     erb :"/teachers/login"
   end
@@ -39,25 +43,21 @@ class TeachersController < ApplicationController
     end
   end
 
-  # GET: /teachers/5
+   # GET: /teachers/5
   get "/teachers/:id" do
     @user = current_user
     erb :"/teachers/show"
   end
 
-  # GET: /teachers/5/edit
+    # GET: /teachers/5/edit
   get "/teachers/:id/edit" do
     @user = current_user
     erb :"/teachers/edit"
   end
 
-  patch "/teachers/:id" do
-    binding.pry
-    redirect "/teachers/:id"
-  end
-
   # DELETE: /teachers/5/delete
   delete "/teachers/:id/delete" do
+    current_user.delete
     redirect "/teachers"
   end
 
