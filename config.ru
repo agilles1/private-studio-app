@@ -7,5 +7,4 @@ end
 run ApplicationController
 use UsersController
 use AssignmentsController
-use StudentsController
-use TeachersController
+

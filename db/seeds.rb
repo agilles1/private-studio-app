@@ -3,15 +3,15 @@ kenai = {name: "Kenai", email: "ballislyfe@aol.com", password: "ball", phone_num
 michael = {name: "Michael", email: "drumzrule@yahoo.com", password: "biden2020", phone_number: "3333333333"}
 tim = {name: "Tim", email: "dewtit@me.org", password: "trumpetisfun", phone_number: "555-652-5000"}
 todd = {name: "Todd", email: "num1dad@you.net", password: "trumpetisfun", phone_number: "555-652-4500"}
-teacher_todd = Teacher.create(todd)
-teacher_tim = Teacher.create(tim)
-student_sophie = Student.new(sophie)
+teacher_todd = User.create(todd)
+teacher_tim =  User.create(tim)
+student_sophie = User.new(sophie)
 student_sophie.teacher = teacher_todd
 student_sophie.save
-student_kenai = Student.new(kenai)
+student_kenai = User.new(kenai)
 student_kenai.teacher = teacher_todd
 student_kenai.save
-student_michael = Student.new(michael)
+student_michael = User.new(michael)
 student_michael.teacher = teacher_tim
 student_michael.save
 
