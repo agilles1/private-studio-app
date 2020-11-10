@@ -1,1 +1,6 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>New Assignment</h1>
+
+<form method="POST" action="/assignments">
+<input type="text" name="assignment[content]">
+<input type="hidden" name="assignment[student_id] value="<%=@student.id%>">
+</form>

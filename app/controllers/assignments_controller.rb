@@ -16,17 +16,20 @@ class AssignmentsController < ApplicationController
 
   # GET: /assignments/new
   get "/assignments/students/:id/new" do
+    @student = User.find(params[:id])
     erb :"/assignments/new"
   end
 
   # POST: /assignments
   post "/assignments" do
+    binding.pry
+    @student = User.find(pararms[:id])
     redirect "/assignments"
   end
 
   # GET: /assignments/5
   get "/assignments/:id" do
-    erb :"/assignments/show.html"
+    erb :"/assignments/show"
   end
 
   # GET: /assignments/5/edit

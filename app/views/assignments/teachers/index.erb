@@ -1,5 +1,5 @@
 <h1><%=@student.name%>'s Assignments</h1>
-<a href="/assignments/students/%=@student.id%>/new">New Assignment</a>
+<a href="/users">Home</a> | <a href="/assignments/students/<%=@student.id%>/new">New Assignment</a>
 <br>
 <%@student.assignments.reverse.each do |assignment|%>
     <br>
