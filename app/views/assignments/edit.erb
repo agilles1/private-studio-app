@@ -1,1 +1,13 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit <%=@assignment.student.name%>'s Assignment</h1>
+
+<textarea name="assignment[content]" rows="25" cols="100" form="editform"><%=@assignment.content%></textarea>
+
+<form id="editform" method="POST" action="/assignments/<%=@assignment.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="assignment[id]" value=<%=@assignment.id%>>
+    <input type="submit" value="Edit Assignment">
+</form>
+<br>
+<form method="POST" action="/assignment/@assignment.id/delete">
+    <input type="submit" value="Delete Assignment">
+</form>

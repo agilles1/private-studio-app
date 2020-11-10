@@ -37,12 +37,15 @@ class AssignmentsController < ApplicationController
 
   # GET: /assignments/5/edit
   get "/assignments/:id/edit" do
-    erb :"/assignments/edit.html"
+    @assignment = Assignment.find(params[:id])
+    erb :"/assignments/edit"
   end
 
   # PATCH: /assignments/5
   patch "/assignments/:id" do
-    redirect "/assignments/:id"
+    assignment = Assignment.find(params[:assignment][:id])
+    assignment.update(params[:assignment])
+    redirect "/assignments/students/#{assignment.student.id}"
   end
 
   # DELETE: /assignments/5/delete

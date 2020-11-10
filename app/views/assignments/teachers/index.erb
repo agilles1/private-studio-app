@@ -4,7 +4,7 @@
 <%@student.assignments.reverse.each do |assignment|%>
     <br>
     <p>
-    <%=assignment.created_at.strftime("%b %d, %Y")%> | <a href="/assignments/students/<%=@student.id%>/edit">Edit</a>
+    <%=assignment.created_at.strftime("%b %d, %Y")%> | <a href="/assignments/<%=assignment.id%>/edit">Edit</a>
     <br>
     <br>
     <%=assignment.content%>
