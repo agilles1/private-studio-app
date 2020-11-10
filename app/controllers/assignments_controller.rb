@@ -6,6 +6,7 @@ class AssignmentsController < ApplicationController
   end
 
   get "/assignments/students/:id" do
+    binding.pry
     if current_user.teacher?
       @student = User.find(params[:id])
       erb :"/assignments/teachers/index"

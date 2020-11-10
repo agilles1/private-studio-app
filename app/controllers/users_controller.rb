@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   get "/users" do
     @user = current_user
-    binding.pry
+  
     if @user.teacher?
       @students = @user.students
       erb :"/users/index"
@@ -35,7 +35,6 @@ class UsersController < ApplicationController
   end
 
   post "/users" do
-    binding.pry
     if params[:name] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/users/signup'
     else

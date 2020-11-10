@@ -19,7 +19,7 @@ i=1
 until i==10 do
     assignment = "This is assignment number #{i}."
     new = Assignment.new(content: assignment)
-    new.user_id = student_kenai
+    new.student = student_kenai
     new.save
     i+=1
 end
@@ -28,7 +28,7 @@ i=1
 until i==6 do
     assignment = "This is assignment number #{i}."
     new = Assignment.new(content: assignment)
-    new.user_id = student_michael
+    new.student = student_michael
     new.save
     i+=1
 end
@@ -37,7 +37,7 @@ i=1
 until i==15 do
     assignment = "This is assignment number #{i}."
     new = Assignment.new(content: assignment)
-    new.user_id = student_sophie
+    new.student = student_sophie
     new.save
     i+=1
 end
