@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   
     if @user.teacher?
       @students = @user.students
+      @user_count = @students.count
       erb :"/users/index"
     else
       erb :"/users/index"
     end
   end
   
-  #Account Management#
   get "/users/login" do
     if logged_in?
       redirect "/users"
@@ -57,19 +57,16 @@ class UsersController < ApplicationController
     end
   end
 
-   # GET: /users/5
   get "/users/:id" do
     @user = current_user
     erb :"/users/show"
   end
 
-    # GET: /users/5/edit
   get "/users/:id/edit" do
     @user = current_user
     erb :"/users/edit"
   end
 
-  # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     current_user.delete
     redirect "/users/login"

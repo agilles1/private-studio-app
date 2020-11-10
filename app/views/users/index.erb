@@ -27,6 +27,21 @@
                 <br>
             <%end%>
         <ul>
+        <br>
+        <h3>Recent Assignments:</h3>
+        <ul>
+            <%@user.student_assignments.reverse.first(@user_count).each do |assignment|%>
+                <br>
+                <a href="/assignments/students/<%=assignment.student.id%>"><%=assignment.student.name%></a> | <%=assignment.created_at.strftime("%b %d, %Y")%>
+                <br>
+                <br>
+                <%=assignment.content%>
+                <br>
+                <br>
+                <hr style="width:50%;text-align:left;margin-left:0">
+            <%end%>
+        </ul>
+
     <%else%>
     <h2>Teacher: <%=@user.teacher.name%></h2>
         <%if @user.assignments.empty?%>

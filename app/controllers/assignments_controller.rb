@@ -1,7 +1,5 @@
 class AssignmentsController < ApplicationController
 
-  # GET: /assignments
-
   get "/assignments" do
     @user=User.find(current_user.id)
     erb :"assignments/index"
@@ -16,7 +14,6 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  # GET: /assignments/new
   get "/assignments/students/:id/new" do
     if current_user.teacher?
       @student = User.find(params[:id])
@@ -26,7 +23,6 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  # POST: /assignments
   post "/assignments" do
     if params[:content] != ""
       Assignment.create(params)
@@ -36,12 +32,6 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  # GET: /assignments/5
-  get "/assignments/:id" do
-    erb :"/assignments/show"
-  end
-
-  # GET: /assignments/5/edit
   get "/assignments/:id/edit" do
     if current_user.teacher?
     @assignment = Assignment.find(params[:id])
@@ -51,7 +41,6 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  # PATCH: /assignments/5
   patch "/assignments/:id" do
     if params[:assignment][:content] != ""
       assignment = Assignment.find(params[:assignment][:id])
@@ -63,11 +52,11 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  # DELETE: /assignments/5/delete
   delete "/assignments/:id/delete" do
     assignment = Assignment.find(params[:id])
     student = assignment.student
     assignment.destroy
     redirect "/assignments/students/#{student.id}"
   end
+
 end
