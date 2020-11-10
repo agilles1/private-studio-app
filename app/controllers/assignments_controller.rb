@@ -1,10 +1,6 @@
 class AssignmentsController < ApplicationController
 
   # GET: /assignments
-  get "/assignments" do
-    erb :"/assignments/index.html"
-  end
-
   get "/assignments/students/:id" do
     if current_user.teacher?
       @student = User.find(params[:id])
@@ -50,6 +46,10 @@ class AssignmentsController < ApplicationController
 
   # DELETE: /assignments/5/delete
   delete "/assignments/:id/delete" do
-    redirect "/assignments"
+    binding.pry
+    assignment = Assignment.find(params[:id])
+    student = assignment.student
+    assignment.destroy
+    redirect "/assignments/students/#{student.id}"
   end
 end
