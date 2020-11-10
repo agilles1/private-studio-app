@@ -5,6 +5,15 @@ class AssignmentsController < ApplicationController
     erb :"/assignments/index.html"
   end
 
+  get "/assignments/students/:id" do
+    if current_user.teacher?
+      @student = User.find(params[:id])
+      erb :"/assignments/teachers/index"
+    else
+      redirect '/users'
+    end
+  end
+
   # GET: /assignments/new
   get "/assignments/new" do
     erb :"/assignments/new.html"

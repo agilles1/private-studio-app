@@ -2,26 +2,40 @@
 
     <div class="sidebar">
         <br>
-        <form method="post" action="/teachers/logout">
+        <form method="post" action="/users/logout">
         <input type="submit" value="Sign-out">
         </form>
         <br>
-        <form method="get" action="/teachers/<%=@user.id%>">
+        <form method="get" action="/users/<%=@user.id%>">
         <input type="submit" value="Account Details">
         </form>
         <br>
-        <form method="get" action="/teachers/<%=@user.id%>/delete>">
+        <form method="get" action="/users/<%=@user.id%>/delete>">
         <input type="submit" value="Delete Account">
         </form>
         <br>
        
     </div>
 
-    <h3>Current Students:</h3>
-    <br>
-    <%@students.each do |student|%>
-        <a href="/teachers/students/<%=student.id%>"> <%=student.name%> </a>
-        <br>
+    <%if @user.teacher?%>
+        <h3>Current Students:</h3>
+        <ul>
+            <%@students.each do |student|%>
+                <br>
+                <a href="/assignments/students/<%=student.id%>"> <%=student.name%> </a>
+                <br>
+            <%end%>
+        <ul>
+    <%else%>
+        <%if @user.assignments.empty?%>
+            <p>ASSIGNMENTS COMING SOON!</p>
+        <%else%>
+            <h3>Assignments:</h3>
+            <%@user.assignments.each do |assignment|%>
+                <p>
+                <%=assignment.content%>
+                </p>
+                <br>
+                <%end%>
+        <%end%>
     <%end%>
-    <br>
-

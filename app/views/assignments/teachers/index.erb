@@ -1,0 +1,5 @@
+<h1><%=@student.name%>'s Assignments</h1>
+
+<%@student.assignments.each do |assignment|%>
+    <%=assignment.content%>
+<%end%>

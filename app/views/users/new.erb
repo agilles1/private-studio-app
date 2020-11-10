@@ -1,21 +1,30 @@
 <h1>Welcome to MyStudio!</h1>
 <h3>Please sign-up below:</h3>
 <p>
-    <form method="POST" action="/teachers">
+    <form method="POST" action="/users">
         <label>Name:</label>
-        <input type="text" name="teacher[name]">
+        <input type="text" name="user[name]">
         <br>
         <br>
         <label>Phone:</label>
-        <input type="text" name="teacher[phone_number]">
+        <input type="text" name="user[phone_number]">
         <br>
         <br>
         <label>Email:</label>
-        <input type="text" name="teacher[email]">
+        <input type="text" name="user[email]">
         <br>
         <br>
         <label>Password:</label>
-        <input type="password" name="teacher[password]">
+        <input type="password" name="user[password]">
+        <br>
+        <br>
+       <label for="teacher_id">Choose a teacher:</label>
+        <select name="user[teacher_id]">
+        <%@teachers.each do |teacher|%>
+            <option value="<%=teacher.id%>"><%=teacher.name%></option>
+        <%end%>
+            <option value="nil">Teacher</option>
+        </select>
         <br>
         <br>
         <input type="submit" value="Create Profile">

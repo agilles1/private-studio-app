@@ -2,26 +2,28 @@ class UsersController < ApplicationController
 
   get "/users" do
     @user = current_user
-    @students = @user.students
-    erb :"/users/index"
+    binding.pry
+    if @user.teacher?
+      @students = @user.students
+      erb :"/users/index"
+    else
+      erb :"/users/index"
+    end
   end
   
   #Account Management#
-  patch "/users/:id" do
-    binding.pry
-    redirect "/users/:id"
-  end
-
   get "/users/login" do
     erb :"/users/login"
   end
 
   get "/users/signup" do
+    @teachers = User.where(teacher_id: nil)
+    
     erb :"/users/new"
   end
 
   post "/users/login" do
-    user = Teacher.find_by(:email => params[:email])
+    user = User.find_by(:email => params[:email])
  
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -33,10 +35,11 @@ class UsersController < ApplicationController
   end
 
   post "/users" do
+    binding.pry
     if params[:name] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/users/signup'
     else
-      @user = Teacher.new(params[:teacher])
+      @user = User.new(params[:user])
       @user.save
       session[:user_id] = @user.id
       redirect to '/users'
@@ -61,22 +64,18 @@ class UsersController < ApplicationController
     redirect "/users"
   end
 
+  patch "/users/:id" do
+    @user = User.find(params[:user][:id])
+    @user.update(params[:user])
+    redirect "/users/:id"
+  end
+
   #Interact with Students from Teacher view#
 
   get "/users/students/:id" do
+    @student = User.find(params[:id])
+    binding.pry
     #renders the view with previous assignments and has a button to create a new assignment.
     end
-
-  helpers do
-
-    def logged_in?
-      !!current_user
-    end
-
-    def current_user
-      @current_user ||= Teacher.find_by(id: session[:user_id]) if session[:user_id]
-    end
-
-  end
 
 end
