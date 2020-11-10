@@ -1,5 +1,11 @@
 <h1><%=@student.name%>'s Assignments</h1>
-
-<%@student.assignments.each do |assignment|%>
+<a href="/assignments/students/%=@student.id%>/new">New Assignment</a>
+<br>
+<%@student.assignments.reverse.each do |assignment|%>
+    <br>
+    <p>
     <%=assignment.content%>
+    </p>
+
+    <hr style="width:50%;text-align:left;margin-left:0">
 <%end%>
