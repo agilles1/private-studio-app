@@ -1,20 +1,20 @@
 <h1>Welcome, <%=@user.name%>!</h1> 
 
-    <div class="sidebar">
-        <br>
+    <div class = "sidebar">
+    <h2>Menu</h2>
         <form method="post" action="/users/logout">
-        <input type="submit" value="Sign-out">
+            <input type="submit" value="Sign-out">
         </form>
         <br>
         <form method="get" action="/users/<%=@user.id%>">
-        <input type="submit" value="Account Details">
+            <input type="submit" value="Account Details">
         </form>
-        <br>
-        <form method="get" action="/users/<%=@user.id%>/delete>">
-        <input type="submit" value="Delete Account">
+       <br>
+        <form method="post" action="/users/<%=@user.id%>/delete>">
+            <input type="submit" value="Delete Account">
         </form>
-        <br>
-       
+        
+
     </div>
 
     <%if @user.teacher?%>
@@ -31,11 +31,18 @@
             <p>ASSIGNMENTS COMING SOON!</p>
         <%else%>
             <h3>Assignments:</h3>
-            <%@user.assignments.each do |assignment|%>
-                <p>
-                <%=assignment.content%>
-                </p>
+            <%@user.assignments.reverse.each do |assignment|%>
                 <br>
+                <p>
+                <%=assignment.created_at.strftime("%b %d, %Y")%>
+                <br>
+                <br>
+                <%=assignment.content%>
+                <br>
+                
+                </p>
+                
+                <hr style="width:50%;text-align:left;margin-left:0">
                 <%end%>
         <%end%>
     <%end%>

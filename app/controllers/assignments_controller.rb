@@ -22,9 +22,12 @@ class AssignmentsController < ApplicationController
 
   # POST: /assignments
   post "/assignments" do
-    binding.pry
-    @student = User.find(pararms[:id])
-    redirect "/assignments"
+    if params[:content] != ""
+      Assignment.create(params)
+      redirect "/assignments/students/#{params[:student_id]}"
+    else
+      redirect "/assignments/students/#{params[:student_id]}/new"
+    end
   end
 
   # GET: /assignments/5

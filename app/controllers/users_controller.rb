@@ -34,6 +34,11 @@ class UsersController < ApplicationController
 
   end
 
+  post "/users/logout" do
+    session.clear
+    redirect "/users/login"
+  end
+
   post "/users" do
     if params[:name] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/users/signup'
