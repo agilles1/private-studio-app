@@ -28,12 +28,12 @@ Note has:
     
 TO DO:
     -Teacher
-        -create/edit/delete new user function
-        -student assignment view
-        -create/edit/delete new assignment
-        -add if_logged_in? authentication
+        X create/edit/delete new user function
+        X student assignment view
+        X create/edit/delete new assignment
+        X add if_logged_in? authentication
         -add student to "roster" (Prints a list of Students without teacher_id)
-        -do not create if already exhists?
+        X do not create if already exhists?
 
     -Student
         -CRUD account functions
