@@ -1,6 +1,12 @@
 class AssignmentsController < ApplicationController
 
   # GET: /assignments
+
+  get "/assignments" do
+    @user=User.find(current_user.id)
+    erb :"assignments/index"
+  end
+
   get "/assignments/students/:id" do
     if current_user.teacher?
       @student = User.find(params[:id])
@@ -12,8 +18,12 @@ class AssignmentsController < ApplicationController
 
   # GET: /assignments/new
   get "/assignments/students/:id/new" do
-    @student = User.find(params[:id])
-    erb :"/assignments/new"
+    if current_user.teacher?
+      @student = User.find(params[:id])
+      erb :"/assignments/new"
+    else
+      redirect "/users"
+    end
   end
 
   # POST: /assignments
@@ -33,20 +43,28 @@ class AssignmentsController < ApplicationController
 
   # GET: /assignments/5/edit
   get "/assignments/:id/edit" do
+    if current_user.teacher?
     @assignment = Assignment.find(params[:id])
     erb :"/assignments/edit"
+    else
+      redirect "/users"
+    end
   end
 
   # PATCH: /assignments/5
   patch "/assignments/:id" do
-    assignment = Assignment.find(params[:assignment][:id])
-    assignment.update(params[:assignment])
-    redirect "/assignments/students/#{assignment.student.id}"
+    if params[:assignment][:content] != ""
+      assignment = Assignment.find(params[:assignment][:id])
+      assignment.update(params[:assignment])
+      redirect "/assignments/students/#{assignment.student.id}"
+    else
+      assignment = Assignment.find(params[:assignment][:id])
+      redirect "/assignments/students/#{assignment.student.id}"
+    end
   end
 
   # DELETE: /assignments/5/delete
   delete "/assignments/:id/delete" do
-    binding.pry
     assignment = Assignment.find(params[:id])
     student = assignment.student
     assignment.destroy

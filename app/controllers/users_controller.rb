@@ -13,13 +13,20 @@ class UsersController < ApplicationController
   
   #Account Management#
   get "/users/login" do
-    erb :"/users/login"
+    if logged_in?
+      redirect "/users"
+    else
+      erb :"/users/login"
+    end
   end
 
   get "/users/signup" do
-    @teachers = User.where(teacher_id: nil)
-    
-    erb :"/users/new"
+    if logged_in?
+      redirect "/users"
+    else
+      @teachers = User.where(teacher_id: nil)
+      erb :"/users/new"
+    end
   end
 
   post "/users/login" do
@@ -65,7 +72,7 @@ class UsersController < ApplicationController
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     current_user.delete
-    redirect "/users"
+    redirect "/users/login"
   end
 
   patch "/users/:id" do
@@ -73,13 +80,5 @@ class UsersController < ApplicationController
     @user.update(params[:user])
     redirect "/users/:id"
   end
-
-  #Interact with Students from Teacher view#
-
-  get "/users/students/:id" do
-    @student = User.find(params[:id])
-    binding.pry
-    #renders the view with previous assignments and has a button to create a new assignment.
-    end
 
 end

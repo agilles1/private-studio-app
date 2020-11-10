@@ -10,7 +10,8 @@
             <input type="submit" value="Account Details">
         </form>
        <br>
-        <form method="post" action="/users/<%=@user.id%>/delete>">
+        <form method="post" action="/users/<%=@user.id%>/delete">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete Account">
         </form>
         
@@ -27,11 +28,12 @@
             <%end%>
         <ul>
     <%else%>
+    <h2>Teacher: <%=@user.teacher.name%></h2>
         <%if @user.assignments.empty?%>
             <p>ASSIGNMENTS COMING SOON!</p>
         <%else%>
             <h3>Assignments:</h3>
-            <%@user.assignments.reverse.each do |assignment|%>
+            <%@user.assignments.reverse.first(4).each do |assignment|%>
                 <br>
                 <p>
                 <%=assignment.created_at.strftime("%b %d, %Y")%>
@@ -44,5 +46,7 @@
                 
                 <hr style="width:50%;text-align:left;margin-left:0">
                 <%end%>
+                <br>
+                <a href="/assignments">See more</a>
         <%end%>
     <%end%>
