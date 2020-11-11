@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect "/users"
     else
-      @teachers = User.where(teacher_id: nil)
+      @teachers = User.all.select {|user| user.teacher?}
       erb :"/users/new"
     end
   end

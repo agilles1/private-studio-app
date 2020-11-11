@@ -36,7 +36,7 @@ TO DO:
         X do not create if already exhists?
 
     -Student
-        -CRUD account functions
+        X CRUD account functions
             -select their teacher with radio button
         -assignment read view
 
