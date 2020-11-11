@@ -24,48 +24,51 @@
 
     <%if @user.teacher?%>
         <h3>Current Students:</h3>
-        <ul>
-            <%@students.each do |student|%>
-                <br>
-                <a href="/assignments/students/<%=student.id%>"> <%=student.name%> </a>
-                <br>
-            <%end%>
-        <ul>
-        <br>
-        <h3>Recent Assignments:</h3>
-        <ul>
-            <%@user.student_assignments.reverse.first(@user_count).each do |assignment|%>
-                <br>
-                <a href="/assignments/students/<%=assignment.student.id%>"><%=assignment.student.name%></a> | <%=assignment.created_at.strftime("%b %d, %Y")%>
-                <br>
-                <br>
-                <%=assignment.content%>
-                <br>
-                <br>
-                <hr style="width:50%;text-align:left;margin-left:0">
-            <%end%>
-        </ul>
-
-    <%else%>
-    <h2>Teacher: <%=@user.teacher.name%></h2>
-        <%if @user.assignments.empty?%>
-            <p>ASSIGNMENTS COMING SOON!</p>
+        <%if @students.empty?%>
+            Coming Soon!
         <%else%>
-            <h3>Assignments:</h3>
-            <%@user.assignments.reverse.first(3).each do |assignment|%>
-                <br>
-                <p>
-                <%=assignment.created_at.strftime("%b %d, %Y")%>
-                <br>
-                <br>
-                <%=assignment.content%>
-                <br>
-                
-                </p>
-                
-                <hr style="width:50%;text-align:left;margin-left:0">
+            <ul>
+                <%@students.each do |student|%>
+                    <br>
+                    <a href="/assignments/students/<%=student.id%>"> <%=student.name%> </a>
+                    <br>
                 <%end%>
-                <br>
-                <a href="/assignments">See more</a>
+            <ul>
+            <br>
+            <h3>Recent Assignments:</h3>
+            <ul>
+                <%@user.student_assignments.reverse.first(@user_count).each do |assignment|%>
+                    <br>
+                    <a href="/assignments/students/<%=assignment.student.id%>"><%=assignment.student.name%></a> | <%=assignment.created_at.strftime("%b %d, %Y")%>
+                    <br>
+                    <br>
+                    <%=assignment.content%>
+                    <br>
+                    <br>
+                    <hr style="width:50%;text-align:left;margin-left:0">
+                <%end%>
+            </ul>
         <%end%>
+    <%else%>
+        <h2>Teacher: <%=@user.teacher.name%></h2>
+            <%if @user.assignments.empty?%>
+                <p>ASSIGNMENTS COMING SOON!</p>
+            <%else%>
+                <h3>Assignments:</h3>
+                <%@user.assignments.reverse.first(3).each do |assignment|%>
+                    <br>
+                    <p>
+                    <%=assignment.created_at.strftime("%b %d, %Y")%>
+                    <br>
+                    <br>
+                    <%=assignment.content%>
+                    <br>
+                    
+                    </p>
+                    
+                    <hr style="width:50%;text-align:left;margin-left:0">
+                    <%end%>
+                    <br>
+                    <a href="/assignments">See more</a>
+            <%end%>
     <%end%>
