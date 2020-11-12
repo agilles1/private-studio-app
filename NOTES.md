@@ -28,20 +28,20 @@ Note has:
     
 TO DO:
     -Teacher
-        X create/edit/delete new user function
-        X student assignment view
-        X create/edit/delete new assignment
-        X add if_logged_in? authentication
-        -add student to "roster" (Prints a list of Students without teacher_id)
-        X do not create if already exhists?
+        [X] create/edit/delete new user function
+        [X] student assignment view
+        [X] create/edit/delete new assignment
+        [X] add if_logged_in? authentication
+        [ ] add student to "roster" (Prints a list of Students without teacher_id)
+        [X] do not create if already exhists?
 
     -Student
-        X CRUD account functions
+        [X] CRUD account functions
             -select their teacher with radio button
-        -assignment read view
+        [ ] assignment read view
 
     -Assignment
-        -Limit CUD function to teacher
+        [X] Limit CUD function to teacher
 
             
 
