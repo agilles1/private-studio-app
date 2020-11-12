@@ -41,9 +41,9 @@
                     <br>
                     <a href="/assignments/students/<%=assignment.student.id%>"><%=assignment.student.name%></a> | <%=assignment.created_at.strftime("%b %d, %Y")%>
                     <br>
-                    <br>
+                    <div style = "white-space: pre-line;">
                     <%=assignment.content%>
-                    <br>
+                    </div>
                     <br>
                     <hr style="width:50%;text-align:left;margin-left:0">
                 <%end%>
@@ -57,15 +57,12 @@
                 <h3>Assignments:</h3>
                 <%@user.assignments.reverse.first(3).each do |assignment|%>
                     <br>
-                    <p>
+                    
                     <%=assignment.created_at.strftime("%b %d, %Y")%>
-                    <br>
-                    <br>
+                    <div style = "white-space: pre-line;">
                     <%=assignment.content%>
-                    <br>
-                    
-                    </p>
-                    
+                    </div>
+                    <br>                       
                     <hr style="width:50%;text-align:left;margin-left:0">
                     <%end%>
                     <br>
