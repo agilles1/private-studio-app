@@ -2,8 +2,9 @@
 <a href="/users">Home</a> | <a href="/assignments/students/<%=@student.id%>/new">New Assignment</a>
 <br>
 <%@student.assignments.reverse.each do |assignment|%>
-    <div style = "white-space: pre-line;">
+        <br>
         <%=assignment.created_at.strftime("%b %d, %Y")%> | <a href="/assignments/<%=assignment.id%>/edit">Edit</a>
+        <div style = "white-space: pre-line;">
         <%=assignment.content%>
     </div>
     <br>

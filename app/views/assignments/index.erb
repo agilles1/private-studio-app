@@ -4,10 +4,10 @@
 <br>
     <%@user.assignments.reverse.each do |assignment|%>
         <br>
-        <div style = "white-space: pre-line;">
             <%=assignment.created_at.strftime("%b %d, %Y")%>
+        <div style = "white-space: pre-line;">
             <%=assignment.content%>
-        </div>>
+        </div>
         <br>         
         <hr style="width:50%;text-align:left;margin-left:0">
     <%end%>
