@@ -1,4 +1,5 @@
 <h1>New Assignment for <%=@student.name%></h1>
+
 <textarea name="content" rows="25" cols="100" form="newassignmentform"></textarea>
 <form id="newassignmentform" method="POST" action="/assignments">
 <input type="hidden" name="student_id" id="student_id" value="<%=@student.id%>">

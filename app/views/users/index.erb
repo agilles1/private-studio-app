@@ -3,8 +3,7 @@
      Welcome, <%=@user.name%>!
 </div> 
 
-
-    <div class = "sidebar">
+<div class = "sidebar">
     <h2>Menu</h2>
         <form method="post" action="/users/logout">
             <input type="submit" value="Sign-out">
@@ -19,8 +18,7 @@
             <input type="submit" value="Delete Account">
         </form>
         
-
-    </div>
+</div>
 
     <%if @user.teacher?%>
         <h3>Current Students:</h3>
@@ -42,7 +40,7 @@
                     <a href="/assignments/students/<%=assignment.student.id%>"><%=assignment.student.name%></a> | <%=assignment.created_at.strftime("%b %d, %Y")%>
                     <br>
                     <div style = "white-space: pre-line;">
-                    <%=assignment.content%>
+                        <%=assignment.content%>
                     </div>
                     <br>
                     <hr style="width:50%;text-align:left;margin-left:0">
@@ -57,10 +55,9 @@
                 <h3>Assignments:</h3>
                 <%@user.assignments.reverse.first(3).each do |assignment|%>
                     <br>
-                    
                     <%=assignment.created_at.strftime("%b %d, %Y")%>
                     <div style = "white-space: pre-line;">
-                    <%=assignment.content%>
+                        <%=assignment.content%>
                     </div>
                     <br>                       
                     <hr style="width:50%;text-align:left;margin-left:0">
