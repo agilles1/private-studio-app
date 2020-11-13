@@ -6,16 +6,16 @@
 <div class = "sidebar">
     <h2>Menu</h2>
         <form method="post" action="/users/logout">
-            <input type="submit" value="Sign-out" >
+            <input type="submit" value="Sign-out" style="border:0;  font-weight: bold " >
         </form>
         <br>
         <form method="get" action="/users/<%=@user.id%>">
-            <input type="submit" value="Account Details">
+            <input type="submit" value="Account Details" style="border:0;  font-weight: bold ">
         </form>
        <br>
         <form method="post" action="/users/<%=@user.id%>/delete">
             <input id="hidden" type="hidden" name="_method" value="DELETE">
-            <input type="submit" value="Delete Account">
+            <input type="submit" value="Delete Account" style="border:0;  font-weight: bold ">
         </form>
         
 </div>

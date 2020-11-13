@@ -37,7 +37,7 @@ class AssignmentsController < ApplicationController
   get "/assignments/:id/edit" do
     @assignment = Assignment.find(params[:id])
     
-    if current_user.teacher? && @assignment.student.teacher == current_user
+    if current_user.teacher? && @assignment.teacher == current_user
       
     @teacher = current_user
     erb :"/assignments/edit"
@@ -60,7 +60,9 @@ class AssignmentsController < ApplicationController
   delete "/assignments/:id/delete" do
     assignment = Assignment.find(params[:id])
     student = assignment.student
-    assignment.destroy
+    if assignment.teacher == current_user
+      assignment.destroy
+    end
     redirect "/assignments/students/#{student.id}"
   end
 
