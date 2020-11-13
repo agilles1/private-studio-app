@@ -3,5 +3,6 @@
 <textarea name="content" rows="25" cols="100" form="newassignmentform"></textarea>
 <form id="newassignmentform" method="POST" action="/assignments">
 <input type="hidden" name="student_id" id="student_id" value="<%=@student.id%>">
+<input type="hidden" name="teacher_id" id="teacher_id" value="<%=@teacher.id%>">
 <input type="submit" value="Save">
 </form>

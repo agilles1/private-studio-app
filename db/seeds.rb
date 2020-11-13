@@ -20,6 +20,7 @@ until i==10 do
     assignment = "This is assignment number #{i}."
     new = Assignment.new(content: assignment)
     new.student = student_kenai
+    new.teacher = student_kenai.teacher
     new.save
     i+=1
 end
@@ -29,6 +30,7 @@ until i==6 do
     assignment = "This is assignment number #{i}."
     new = Assignment.new(content: assignment)
     new.student = student_michael
+    new.teacher = student_michael.teacher
     new.save
     i+=1
 end
@@ -38,6 +40,7 @@ until i==15 do
     assignment = "This is assignment number #{i}."
     new = Assignment.new(content: assignment)
     new.student = student_sophie
+    new.teacher = student_sophie.teacher
     new.save
     i+=1
 end

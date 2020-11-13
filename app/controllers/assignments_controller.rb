@@ -6,8 +6,9 @@ class AssignmentsController < ApplicationController
   end
 
   get "/assignments/students/:id" do
-    if current_user.teacher?
-      @student = User.find(params[:id])
+    @student = User.find(params[:id])
+  
+    if current_user.teacher? && @student.teacher == current_user
       erb :"/assignments/teachers/index"
     else
       redirect '/users'
@@ -15,8 +16,9 @@ class AssignmentsController < ApplicationController
   end
 
   get "/assignments/students/:id/new" do
-    if current_user.teacher?
-      @student = User.find(params[:id])
+    @student = User.find(params[:id])
+    if current_user.teacher? && @student.teacher == current_user
+      @teacher = current_user
       erb :"/assignments/new"
     else
       redirect "/users"
@@ -33,8 +35,11 @@ class AssignmentsController < ApplicationController
   end
 
   get "/assignments/:id/edit" do
-    if current_user.teacher?
     @assignment = Assignment.find(params[:id])
+    
+    if current_user.teacher? && @assignment.student.teacher == current_user
+      
+    @teacher = current_user
     erb :"/assignments/edit"
     else
       redirect "/users"
