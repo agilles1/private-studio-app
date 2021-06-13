@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
     def teacher? #returns false is a User has a teacher_id
         true unless self.teacher_id && self.teacher_id > 0
     end
+
 end

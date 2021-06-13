@@ -8,7 +8,7 @@ class AssignmentsController < ApplicationController
   get "/assignments/students/:id" do
     @student = User.find(params[:id])
   
-    if current_user.teacher? && @student.teacher == current_user
+    if is_authorized(@student)
       erb :"/assignments/teachers/index"
     else
       redirect '/users'
